@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define FOO "hello world"
+#define SQUARE(x) x*x
+#define MAX(x, y) (x>y ? x : y)
+#define IS_EVEN(x) (x%2 == 0)
+
 int sum(int *start, int *end) {
     int total = 0;
     while (start < end) {
@@ -109,5 +114,42 @@ int main() {
     for (node *cur = node1; cur != NULL; cur = cur->next) {
         printf("%d\n", cur->data);
     }
+
+    union foo {
+        int a;
+        float b;
+        char c;
+    } ux;
+    int *ux1 = (int *)&ux;
+    float *ux2 = (float *)&ux;
+    char *ux3 = (char *)&ux;
+    ux.a = 222;
+    puts("-----1-----");
+    printf("%d\n", ux.a);
+    printf("%f\n", ux.b);
+    printf("%c\n", ux.c);
+    printf("%d\n", *ux1);
+    ux.b = 2.3;
+    puts("-----2-----");
+    printf("%d\n", ux.a);
+    printf("%f\n", ux.b);
+    printf("%c\n", ux.c);
+    printf("%f\n", *ux2);
+    ux.c = 'x';
+    puts("-----3-----");
+    printf("%d\n", ux.a);
+    printf("%f\n", ux.b);
+    printf("%c\n", ux.c);
+    printf("%c\n", *ux3);
+    puts("----end----");
+    enum colors {RED,GREEN,BLUE};
+    printf("%d %d %d\n", RED, GREEN, BLUE);
+    enum colors color1 = GREEN;
+    printf("%d\n", color1);
+    puts(FOO);
+    printf("%d\n", SQUARE(3 + 4)); // 3 + 4*3 + 4
+    printf("%f\n", MAX(3.4, 3.5)); // 3.50000
+    printf("%d\n", IS_EVEN(3)); // 0
+    printf("%d\n", IS_EVEN(4)); // 1
     return 0;
 }
