@@ -41,7 +41,7 @@ void happy2(car *c) {
     c->price += 1; // (*c).price
 }
 
-int main() {
+int main() { 
     int a1[] = {1, 1, 2, 1, 2};
     int *p = a1;
     // printf("%d\n", p[4]);
@@ -151,5 +151,25 @@ int main() {
     printf("%f\n", MAX(3.4, 3.5)); // 3.50000
     printf("%d\n", IS_EVEN(3)); // 0
     printf("%d\n", IS_EVEN(4)); // 1
+    FILE *fp;
+    fp = fopen("hello.txt", "r");
+    int c;
+    while ((c = getc(fp)) != EOF) {
+        printf("%c", c);
+    }
+    fclose(fp);
+    printf("\n");
+    // printf("%c\n", 99);
+    // int year, month, day;
+    // scanf("%d%*c%d%*c%d", &year, &month, &day);
+    // printf("%d %d %d\n", year, month, day);
+    char *sc1 = malloc(sizeof(char) * 2);
+    if (fgets(sc1, sizeof(sc1), stdin) != NULL)
+    {
+        int i1, j1;
+        printf("%s\n", sc1);
+        sscanf(sc1, "%d%d", &i1, &j1);
+        printf("%d    %d  --- \n", i1, j1);
+    }
     return 0;
 }
