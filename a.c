@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
     printf("%c\n", arr[0]);
     free(arr);
 
-    char* s1 = "Hello, world!";
+    char *s1 = "Hello, world!";
     // s1[0] = 'z'; // 错误
     char s2[] = "Hello, world!";
     s2[0] = 'z'; // 正确
