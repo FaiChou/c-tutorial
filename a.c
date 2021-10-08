@@ -151,25 +151,82 @@ int main() {
     printf("%f\n", MAX(3.4, 3.5)); // 3.50000
     printf("%d\n", IS_EVEN(3)); // 0
     printf("%d\n", IS_EVEN(4)); // 1
-    FILE *fp;
-    fp = fopen("hello.txt", "r");
-    int c;
-    while ((c = getc(fp)) != EOF) {
-        printf("%c", c);
-    }
-    fclose(fp);
-    printf("\n");
+    /****** IO *******/
     // printf("%c\n", 99);
     // int year, month, day;
     // scanf("%d%*c%d%*c%d", &year, &month, &day);
     // printf("%d %d %d\n", year, month, day);
-    char *sc1 = malloc(sizeof(char) * 2);
-    if (fgets(sc1, sizeof(sc1), stdin) != NULL)
-    {
-        int i1, j1;
-        printf("%s\n", sc1);
-        sscanf(sc1, "%d%d", &i1, &j1);
-        printf("%d    %d  --- \n", i1, j1);
+
+    // char *sc1 = malloc(sizeof(char) * 3);
+    // if (fgets(sc1, sizeof(sc1)+1, stdin) != NULL)
+    // {
+    //     int i1, j1;
+    //     sscanf(sc1, "%d%d", &i1, &j1); // read from `sc1`
+    // }
+    // free(sc1);
+
+    // int len_get_char = 0;
+    // while (getchar() != '\n') {
+    //     len_get_char++;
+    // }
+    // printf("%d\n", len_get_char);
+    // putchar('x');
+    // puts("aaaa");
+    // gets(stdin); // deprecated, use fgets() instead
+    /******** FILE ********/
+    FILE *fp;
+    fp = fopen("hello.txt", "r");
+    if (fp == NULL) {
+        puts("CAN NOT OPEN hello.txt");
+        exit(EXIT_FAILURE);
     }
+    int c;
+    while ((c = getc(fp)) != EOF) { // or here replace `getc` with `fgetc`, `getc` is a macro
+        printf("%c", c);
+    }
+    printf("\n");
+    // freopen("output.txt", "w", stdout); // all printf will write to output.txt
+    // printf("hello"); // `hello` will write to output.txt
+    // int i_freopen1, i_freopen2;
+    // scanf("%d", &i_freopen1); 
+    // freopen("someints.txt", "r", stdin);
+    // scanf("%d", &i_freopen2); // someints.txt will be read and set to `i_freopen2`
+    // printf("%d%d\n", i_freopen1, i_freopen2);
+    // fputc('x', fp); // fputc()，putc() // putc is a macro.
+    fclose(fp);
+    // fprintf(stderr, "Something number.\n");
+
+    // char words[10];
+    // puts("Enter strings (q to quit):");
+    // while (fgets(words, 10, stdin) != NULL) {
+    //   if (words[0] == 'q' && words[1] == '\n')
+    //     break;
+    //   puts(words);
+    // }
+    // puts("Done.");
+
+    // char words[14];
+    // puts("Enter a string, please.");
+    // fgets(words, 14, stdin);
+    // puts("This is your string:");
+    // fputs(words, stdout);
+
+    // FILE *fp_fwrite;
+    // unsigned char bytes[] = {5, 37, 9, 0, 255, 13};
+    // fp_fwrite = fopen("output.bin", "wb");
+    // if (fp_fwrite == NULL) {
+    //     puts("CAN NOT OPEN output.bin");
+    //     exit(EXIT_FAILURE);
+    // }
+    // fwrite(bytes, sizeof(char), sizeof(bytes), fp);
+    // fclose(fp);
+
+    // FILE *fp_fread;
+    // unsigned char c_fread;
+    // fp = fopen("output.bin", "rb");
+    // while (fread(&c_fread, sizeof(char), 1, fp) > 0) {
+    //     printf("%d\n", c_fread);
+    // }
+    // fclose(fp);
     return 0;
 }
