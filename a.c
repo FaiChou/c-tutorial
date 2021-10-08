@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+
+#include "bar.h"
 
 #define FOO "hello world"
 #define SQUARE(x) x*x
@@ -41,7 +44,7 @@ void happy2(car *c) {
     c->price += 1; // (*c).price
 }
 
-int main() { 
+int main(int argc, char **argv) { 
     int a1[] = {1, 1, 2, 1, 2};
     int *p = a1;
     // printf("%d\n", p[4]);
@@ -228,5 +231,15 @@ int main() {
     //     printf("%d\n", c_fread);
     // }
     // fclose(fp);
+    printf("%d\n", addd(3, argc));
+    for (char **p = argv; *p != NULL; p++) {
+        printf("arg: %s\n", *p);
+    }
+    char *homeEnv = getenv("HOME");
+    if (homeEnv == NULL) {
+        printf("Cannot find the HOME environment variable\n");
+        return 1;
+    }
+    printf("$HOME: %s\n", homeEnv);
     return 0;
 }
