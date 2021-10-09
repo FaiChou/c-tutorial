@@ -44,6 +44,63 @@ void happy2(car *c) {
     c->price += 1; // (*c).price
 }
 
+void pointer() {
+    // char *s = "a";
+    // printf("%s\n", s);
+    // char *abc = "abcdefg";
+    // char *foo = "foo";
+    // char *bar = "bar";
+    // char *a[] = {abc, "123", "xyz", foo, bar};
+    // printf("%p %p %p %p\n", a[0], a[1], a[2], a[3]);
+    // printf("%s %s %s %s\n", a[0], a[1], a[2], a[3]);
+    // printf("%p %p %p %p\n", &a[0], &a[1], &a[2], &a[3]);
+    // // printf("%s %s %s %s\n", &a[0], &a[1], &a[2], &a[3]);
+    // printf("%p\n", abc);
+    // printf("%p\n", &abc);
+    // char **p_abc = &abc;
+    // printf("%p\n", p_abc);
+    // printf("%p\n", *p_abc);
+    // printf("%s\n", *p_abc);
+
+    // puts("==========");
+    // int ai = 5;
+    // int *p_a = &ai;
+    // int **p_p_a = &p_a;
+    // printf("%d %d %d, %p %p %p %p %p\n", ai, *p_a, **p_p_a, &ai, p_a, *p_p_a, &p_a, &p_p_a);
+    // printf("%p, %p\n", p_p_a, &p_a);
+
+    // char *s = "abcdefg";
+    // char **p_s = &s;
+    // printf("%p %p %p %p %p\n", s, *p_s, &s, p_s, &p_s);
+
+    // char **ss;
+    // *ss = "abcdefg"; // 错误
+
+    const char **s = (const char**)malloc(sizeof(char*) * 2);
+    // *s = "abcdefg";
+    // memcpy(*s, "abc", 4);
+    *s = (char *)malloc(sizeof(char) *8);
+    s[1] = malloc(sizeof(char) *4);
+    char *abcd = "abcd";
+    char *defg = "defg";
+    puts("============");
+    printf("%zd\n", sizeof(abcd));
+    strncpy(s[0], abcd, sizeof(abcd));
+    strncpy(*(s+1), defg, sizeof(defg));
+    printf("%c\n", *s[0]); // print a
+    printf("%c\n", **s); // print a
+    printf("%c\n", s[0][1]); // print b
+    printf("%c\n", *((*s)+1)); // print b
+    printf("%c\n", *(*s+1)); // print b
+    printf("%c\n", *(*s+2)); // print c
+    printf("%c\n", *s[1]); // print d
+    printf("%c\n", **(s+1)); // print d
+    printf("%c\n", **(s+1)+2); // print f
+    printf("%c\n", **(s+1)+9); // print m
+    // printf("%c\n", **(s+2)+9); // error
+    free(s);
+}
+
 int main(int argc, char **argv) { 
     int a1[] = {1, 1, 2, 1, 2};
     int *p = a1;
