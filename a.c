@@ -76,27 +76,28 @@ void pointer() {
     // char **ss;
     // *ss = "abcdefg"; // 错误
 
-    const char **s = (const char**)malloc(sizeof(char*) * 2);
+    char **s = (char**)malloc(sizeof(char*) * 2);
     // *s = "abcdefg";
     // memcpy(*s, "abc", 4);
-    *s = (char *)malloc(sizeof(char) *8);
+    *s = (char *)malloc(sizeof(char) *4);
     s[1] = malloc(sizeof(char) *4);
-    char *abcd = "abcd";
-    char *defg = "defg";
+    char abcd[] = {'a', '3', '2', 'q'};
+    char *defg = "abab";
     puts("============");
     printf("%zd\n", sizeof(abcd));
-    strncpy(s[0], abcd, sizeof(abcd));
-    strncpy(*(s+1), defg, sizeof(defg));
+    printf("%zd\n", sizeof(defg));
+    strncpy(s[0], abcd, 4);
+    strncpy(*(s+1), defg, 4);
     printf("%c\n", *s[0]); // print a
     printf("%c\n", **s); // print a
-    printf("%c\n", s[0][1]); // print b
-    printf("%c\n", *((*s)+1)); // print b
-    printf("%c\n", *(*s+1)); // print b
-    printf("%c\n", *(*s+2)); // print c
-    printf("%c\n", *s[1]); // print d
-    printf("%c\n", **(s+1)); // print d
-    printf("%c\n", **(s+1)+2); // print f
-    printf("%c\n", **(s+1)+9); // print m
+    printf("%c\n", s[0][1]); // print 3
+    printf("%c\n", *((*s)+1)); // print 3
+    printf("%c\n", *(*s+1)); // print 3
+    printf("%c\n", *(*s+2)); // print 2
+    printf("%c\n", *s[1]); // print a
+    printf("%c\n", **(s+1)); // print a
+    printf("%c\n", **(s+1)+2); // print c
+    printf("%c\n", **(s+1)+9); // print j
     // printf("%c\n", **(s+2)+9); // error
     free(s);
 }
