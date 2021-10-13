@@ -5,6 +5,8 @@
 
 #include "bar.h"
 
+// -std=c11 -pedantic-errors -Wall -Wextra -Werror
+
 #define FOO "hello world"
 #define SQUARE(x) x*x
 #define MAX(x, y) (x>y ? x : y)
@@ -84,8 +86,8 @@ void pointer() {
     char abcd[] = {'a', '3', '2', 'q'};
     char *defg = "abab";
     puts("============");
-    printf("%zd\n", sizeof(abcd));
-    printf("%zd\n", sizeof(defg));
+    // 4 8 1 8
+    printf("%zd  %zd  %zd  %zd\n", sizeof(abcd), sizeof(defg), sizeof(char), sizeof(char *));
     strncpy(s[0], abcd, 4);
     strncpy(*(s+1), defg, 4);
     printf("%c\n", *s[0]); // print a
