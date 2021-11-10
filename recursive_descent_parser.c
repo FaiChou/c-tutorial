@@ -1,9 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+<expr> ::= <term> <expr_tail>
+
+<expr_tail> ::= + <term> <expr_tail>
+              | - <term> <expr_tail>
+              | <empty>
+
+<term> ::= <factor> <term_tail>
+
+<term_tail> ::= * <factor> <term_tail>
+              | / <factor> <term_tail>
+              | <empty>
+
+<factor> ::= ( <expr> ) |  Num
+*/
+
 enum {
   Num
 };
+
 int token;
 int token_val;
 char* line = NULL;
@@ -90,7 +107,7 @@ void match(int tk) {
   next();
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   size_t linecap = 0;
   ssize_t linelen;
