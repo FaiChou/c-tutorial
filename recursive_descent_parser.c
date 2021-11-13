@@ -2,6 +2,19 @@
 #include <stdlib.h>
 
 /*
+<expr> ::= <expr> + <term>
+         | <expr> - <term>
+         | <term>
+
+<term> ::= <term> * <factor>
+         | <term> / <factor>
+         | <factor>
+
+<factor> ::= ( <expr> )
+           | Num
+*/
+
+/*
 <expr> ::= <term> <expr_tail>
 
 <expr_tail> ::= + <term> <expr_tail>
