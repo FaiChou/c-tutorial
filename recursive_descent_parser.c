@@ -2,16 +2,15 @@
 #include <stdlib.h>
 
 /*
-<expr> ::= <expr> + <term>
-         | <expr> - <term>
+<expr> ::= <term> + <expr>
+         | <term> - <expr>
          | <term>
 
-<term> ::= <term> * <factor>
-         | <term> / <factor>
+<term> ::= <factor> * <term> 
+         | <factor> / <term>
          | <factor>
 
-<factor> ::= ( <expr> )
-           | Num
+<factor> ::= ( <expr> ) | Num
 */
 
 enum {
