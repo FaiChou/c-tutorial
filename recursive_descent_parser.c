@@ -13,9 +13,7 @@
 <factor> ::= ( <expr> ) | Num
 */
 
-enum {
-  Num
-};
+enum { Num };
 
 int token;
 int token_val;
@@ -36,7 +34,6 @@ int factor() {
   }
   return v;
 }
-
 int term() {
   int lvalue = factor();
   if (token == '*') {
@@ -49,7 +46,6 @@ int term() {
     return lvalue;
   }
 }
-
 int expr() {
   int lvalue = term();
   if (token == '+') {
@@ -69,7 +65,6 @@ void next() {
   }
   // printf("%c\n", *src);
   token = *src++;
-
   if (token >= '0' && token <= '9') {
     token_val = token - '0';
     token = Num;
