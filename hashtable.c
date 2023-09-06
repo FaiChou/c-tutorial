@@ -54,7 +54,7 @@ bool hash_table_insert(person *p) {
 person *hash_table_lookup(char *name) {
   int index = hash(name);
   if (hash_table[index] != NULL &&
-    strncmp(hash_table[index]->name, name, TABLE_SIZE) == 0) {
+    strncmp(hash_table[index]->name, name, MAX_NAME) == 0) {
     return hash_table[index];
   } else {
     return NULL;
