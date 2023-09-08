@@ -88,6 +88,4 @@ int main() {
     printf("%s\n", search(root, "app") ? "Found" : "Not Found");    // Output: Not Found
 
     return 0;
-
-    return 0;
 }
