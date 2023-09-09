@@ -70,12 +70,29 @@ bool delete(TrieNode* current, const char* word, int level, int length) {
     return false;
 }
 
+void log_trie(TrieNode *node, const char buffer[]) {
+  if (node == NULL) {
+    printf("DONE\n");
+    return;
+  }
+  if (node->isEndOfWord) {
+    printf("%s\n", buffer);
+  }
+  for (int i=0; i < ALPHABET_SIZE; ++i) {
+    if (node->children[i] != NULL) {
+      char newbuffer[strlen(buffer)+2];
+      sprintf(newbuffer, "%s%c", buffer, (i+'a'));
+      log_trie(node->children[i], newbuffer);
+    }
+  }
+}
+
 int main() {
     TrieNode* root = new_node();
     insert(root, "apple");
     insert(root, "app");
     insert(root, "bat");
-
+    log_trie(root, "");
     printf("%s\n", search(root, "apple") ? "Found" : "Not Found");  // Output: Found
     printf("%s\n", search(root, "app") ? "Found" : "Not Found");    // Output: Found
     printf("%s\n", search(root, "appp") ? "Found" : "Not Found");   // Output: Not Found
@@ -87,5 +104,10 @@ int main() {
     printf("%s\n", search(root, "bat") ? "Found" : "Not Found");    // Output: Found
     printf("%s\n", search(root, "app") ? "Found" : "Not Found");    // Output: Not Found
 
+    insert(root, "cde");
+    insert(root, "applea");
+    insert(root, "appa");
+    insert(root, "xpp");
+    log_trie(root, "");
     return 0;
 }
