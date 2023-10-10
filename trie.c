@@ -48,6 +48,7 @@ bool search(TrieNode *root, const char *word) {
 // but it not check if the item(not the last one) is endofword
 // for example, if `apple` and `app` in the structure, then you want to
 // delete the `apple`, this function will delete `app` as well
+// check my blog: https://faichou.com/trie-recursive-deletion/
 bool delete(TrieNode* current, const char* word, int level, int length) {
     if (current == NULL) {
         return false;
