@@ -43,6 +43,11 @@ bool search(TrieNode *root, const char *word) {
   return (current != NULL && current->isEndOfWord);
 }
 
+// there's a bug here, the function will delete from the bottom of
+// the struct recursively
+// but it not check if the item(not the last one) is endofword
+// for example, if `apple` and `app` in the structure, then you want to
+// delete the `apple`, this function will delete `app` as well
 bool delete(TrieNode* current, const char* word, int level, int length) {
     if (current == NULL) {
         return false;
