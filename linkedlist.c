@@ -37,10 +37,10 @@ node_t *insert_at_head(node_t **head, node_t *node_to_insert) {
   return node_to_insert;
 }
 
-node_t *find_node(node_t *head, int value) {
-  while (head != NULL) {
-    if (head->value == value) return head;
-    head = head->next;
+node_t *find_node(node_t *n, int value) {
+  while (n != NULL) {
+    if (n->value == value) return n;
+    n = n->next;
   }
   return NULL;
 }
@@ -63,7 +63,7 @@ void free_all_nodes(node_t **head) {
   *head = NULL;
 }
 
-void remove_node(node_t **head, node_t *node_to_remove) {
+node_t *remove_node(node_t **head, node_t *node_to_remove) {
   if (*head == node_to_remove) {
     *head = node_to_remove->next;
     if (*head != NULL) {
@@ -78,6 +78,7 @@ void remove_node(node_t **head, node_t *node_to_remove) {
   node_to_remove->next = NULL;
   node_to_remove->prev = NULL;
   // free(node_to_remove); // don't free it, bcz can not sure it was created in the heap
+  return node_to_remove;
 }
 
 int main() {
@@ -95,7 +96,9 @@ int main() {
   }
   printlist(head);
   temp = find_node(head, 100);
-  remove_node(&head, temp->next);
+  node_t *removed = remove_node(&head, temp->next);
+  printf("removed node with value: %d\n", removed->value);
+  free(removed);
   printlist(head);
   free_all_nodes(&head);
   printlist(head);
