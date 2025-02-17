@@ -21,6 +21,10 @@ void printlist(node_t *head) {
 
 node_t *create_new_node(int value) {
   node_t *n = malloc(sizeof(node_t));
+  if (n == NULL) {
+    printf("Error: Failed to allocate memory for new node\n");
+    return NULL;
+  }
   n->value = value;
   n->next = NULL;
   n->prev = NULL;
@@ -86,13 +90,22 @@ int main() {
   node_t *temp;
   for (int i = 25; i > 0; --i) {
     temp = create_new_node(i);
+    if (temp == NULL) {
+      printf("Error: Failed to create new node\n");
+      return 1;
+    }
     insert_at_head(&head, temp);
   }
 
   temp = find_node(head, 13);
   if (temp != NULL) {
     printf("found node with value: %d\n", temp->value);
-    insert_after_node(temp, create_new_node(100));
+    node_t *new_node = create_new_node(100);
+    if (new_node == NULL) {
+      printf("Error: Failed to create new node\n");
+      return 1;
+    }
+    insert_after_node(temp, new_node);
   }
   printlist(head);
   temp = find_node(head, 100);
