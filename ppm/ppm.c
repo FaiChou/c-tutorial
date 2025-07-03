@@ -49,7 +49,7 @@ ppm_image *ppm_readimage(const char *filename) {
     }
 
     // get maxval
-    if (fscanf(file, "%u", &(result->maxval)) != 1) {
+    if (fscanf(file, "%hu", &(result->maxval)) != 1) {
         perror("Failed to read maxval");
         free(result);
         fclose(file);

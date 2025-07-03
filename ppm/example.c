@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
         for (size_t j = 0; j < image->rows; j++) {
             double hue = ((double)j) / ((double)image->rows);
             pixel color = hueToRGB(hue);
-            const double weight = 0.4;
+            const double weight = 0.3;
             image->pixels[j][i].r = (uint16_t)(color.r * weight + image->pixels[j][i].r * (1 - weight));
             image->pixels[j][i].g = (uint16_t)(color.g * weight + image->pixels[j][i].g * (1 - weight));
             image->pixels[j][i].b = (uint16_t)(color.b * weight + image->pixels[j][i].b * (1 - weight));
